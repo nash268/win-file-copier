@@ -11,7 +11,7 @@ REM Create the destination folder if it doesn't exist
 if not exist "%destination%" mkdir "%destination%"
 
 REM Get the drive letter of the USB drive where the script is located
-for %%P in ("%~dp0") do set "usb_drive=%%~dP"
+set "usb_drive=%cd:~0,2%"
 
 REM Display USB drive letter
 echo USB drive letter: %usb_drive%
