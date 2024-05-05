@@ -32,8 +32,8 @@ for /f %%D in ('wmic logicaldisk get caption ^| findstr /r "[A-Z]:"') do (
 
 
 for %%F in ("Desktop" "Downloads" "Documents") do (
+    echo copying from %%F
     for %%E in (%extensions%) do (
-        echo copying from %%F
         xcopy "%USERPROFILE%\%%F\*%%~nxE" "%destination%\%%F\" /s /i /y /h 2>nul
     )
 )
